@@ -1,0 +1,74 @@
+<div>
+    Reads or writes content of the specified file.
+</div>
+
+<h3>Syntax</h3>
+<div>
+<pre>&lt;file action="file_action"
+      path="file_path"
+      type="file_type"
+      charset="charset_of_text_file"&gt;
+    body defining content of the file if action="write" or action="append"
+&lt;/file&gt;</pre>
+</div>
+
+<h3>Attributes</h3>
+
+<div>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Required</th>
+            <th>Default</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>action</td>
+            <td>no</td>
+            <td>read</td>
+            <td>
+                Defines file action. Valid values are <em>read</em>, <em>append</em> and <em>write</em>.
+            </td>
+        </tr>
+        <tr>
+            <td>path</td>
+            <td>yes</td>
+            <td></td>
+            <td>
+                File path, relative to the working directory.
+            </td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>no</td>
+            <td>text</td>
+            <td>
+                Type of file: <em>text</em> or <em>binary</em>.
+            </td>
+        </tr>
+        <tr>
+            <td>charset</td>
+            <td>no</td>
+            <td>[Default charset for config]</td>
+            <td>
+                Charset for text files. Has no effect if type is <em>binary</em>.
+            </td>
+        </tr>
+    </table>
+</div>
+        
+<h3>Example</h3>
+<div>
+<pre>&lt;file action="write" path="123.txt"&gt;
+    &lt;file action="read" path="1.txt"/&gt;
+    -----------------------------------
+    &lt;file action="read" path="2.txt"/&gt;
+    -----------------------------------
+    &lt;file action="read" path="3.txt"/&gt;
+&lt;/file&gt;</pre>
+</div>
+
+<p>
+    Here, new file is created containing appended contents of three existing files,
+    separeted with lines.
+</p>
